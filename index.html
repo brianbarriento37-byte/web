@@ -705,7 +705,15 @@ a:focus-visible, button:focus-visible {
   outline: 3px solid var(--gold);
   outline-offset: 3px;
 }
-</style>
+</style>@media(max-width: 768px){
+  .grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
+  }
+  .img-container {
+    height: 180px !important;
+  }
+}
 </head>
 
 <body>
@@ -742,7 +750,7 @@ a:focus-visible, button:focus-visible {
     <div class="grid">
       <div class="card">
         <div class="img-container">
-          <img src="c:\Users\echoe\Downloads\B0FD6YJX6B_3-250x250.jpg" alt="Mirzai Valentine eau de parfum">
+          <img src="perfume1.jpg"  alt="Mirzai Valentine eau de parfum">
         </div>
         <h3>nombre del perfume </h3>
         <p class="price">RD$3,800</p>
