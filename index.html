@@ -781,6 +781,18 @@ margin: 0 8px !important;
 font-size: 11px !important;
 padding: 5px 8px !important;
 }
+@media(max-width: 768px){
+  .badge-agotado {
+    top: 10px !important;
+    right: 10px !important;
+    padding: 6px 12px !important;
+    font-size: 10px !important;
+  }
+  
+  .card.agotado {
+    opacity: 0.8 !important;
+  }
+}
 /* BARRA DE ENVÍOS EN MÓVIL - CORREGIDA */
 .envios-bar {
 position: relative !important;
@@ -863,7 +875,51 @@ min-height: 40px !important;
 }
 .card .price {
 font-size: 16px !important;
+
+}/* === BADGE DE AGOTADO === */
+.badge-agotado {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.5);
+  /* ESTO EVITA QUE CAMBIE EL TAMAÑO */
+  pointer-events: none;
 }
+
+/* CARD AGOTADO - OPACIDAD */
+.card.agotado {
+  opacity: 0.7;
+}
+
+/* CARD AGOTADO - BOTÓN DESHABILITADO */
+.card.agotado .btn-wsp-card {
+  background: rgba(100, 100, 100, 0.5);
+  color: #888;
+  border-color: #555;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.card.agotado .btn-wsp-card:hover {
+  transform: none;
+  box-shadow: none;
+  background: rgba(100, 100, 100, 0.5);
+}
+
+/* IMAGEN EN GRIS PARA AGOTADO */
+.card.agotado .img-container img {
+  filter: grayscale(50%);
+}
+
 /* BENEFICIOS 2 COLUMNAS */
 .beneficios {
 padding: 40px 20px;
@@ -924,6 +980,50 @@ right: 0;
 font-size: 28px;
 }
 }
+/* BADGE DE AGOTADO - POSICIONAMIENTO ABSOLUTO */
+.badge-agotado {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.5);
+  /* ESTO EVITA QUE AFECTE EL TAMAÑO */
+  pointer-events: none;
+}
+
+/* CARD AGOTADO - OPACIDAD PERO SIN CAMBIAR TAMAÑO */
+.card.agotado {
+  opacity: 0.7;
+}
+
+/* CARD AGOTADO - BOTÓN DESHABILITADO */
+.card.agotado .btn-wsp-card {
+  background: rgba(100, 100, 100, 0.5);
+  color: #888;
+  border-color: #555;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.card.agotado .btn-wsp-card:hover {
+  transform: none;
+  box-shadow: none;
+  background: rgba(100, 100, 100, 0.5);
+}
+
+/* IMAGEN EN GRIS PARA AGOTADO (OPCIONAL) */
+.card.agotado .img-container img {
+  filter: grayscale(50%);
+}
+
 </style>
 </head>
 <body>
@@ -959,6 +1059,7 @@ Perfumes originales al mejor precio. Encuentra la fragancia que define tu estilo
 <h2>Nuestro Catálogo</h2>
 <p>Explora nuestra cuidada selección de perfumes de diseñador y nicho. Calidad garantizada.</p>
 <!-- PAGINA 1 -->
+
 <div class="pagina active">
 <div class="grid">
 <div class="card">
@@ -971,7 +1072,8 @@ Perfumes originales al mejor precio. Encuentra la fragancia que define tu estilo
 <i class="fab fa-whatsapp"></i> WhatsApp
 </a>
 </div>
-<div class="card">
+<div class="card agotado">
+  <span class="badge-agotado">Agotado</span>
 <div class="img-container">
 <img src="imagenes/Le-Falcone-Niche-Mirsaal-Love-Letter-eau-de-parfum-100ml-2.webp" alt="Mirzai Love Letter">
 </div>
@@ -981,7 +1083,8 @@ Perfumes originales al mejor precio. Encuentra la fragancia que define tu estilo
 <i class="fab fa-whatsapp"></i> WhatsApp
 </a>
 </div>
-<div class="card">
+<div class="card agotado">
+  <span class="badge-agotado">Agotado</span>
 <div class="img-container">
 <img src="imagenes/Lattafa-Suqraat.png" alt="Baccarat Rouge 540">
 </div>
