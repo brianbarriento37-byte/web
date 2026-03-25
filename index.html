@@ -1037,13 +1037,28 @@ a:focus-visible, button:focus-visible {
   }
 }
 
-/* === RESPONSIVE PARA MÓVIL === */
+/* === RESPONSIVE MÓVIL === */
 @media(max-width: 768px){
+  header {
+    padding: 15px 5% !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  
+  .logo {
+    font-size: 24px !important;
+  }
+  
+  nav a {
+    margin: 0 10px !important;
+    font-size: 12px !important;
+  }
+  
   .envios-bar {
     position: relative !important;
     top: 0 !important;
     padding: 10px 15px !important;
-    font-size: 12px !important;
+    font-size: 11px !important;
   }
   
   .envios-content {
@@ -1055,9 +1070,20 @@ a:focus-visible, button:focus-visible {
     width: 20px;
   }
   
+  .badge {
+    display: inline-block !important;
+  }
+  
   .hero {
-    margin-top: 0 !important;
-    padding: 40px 20px 80px !important;
+    padding: 60px 20px 100px !important;
+  }
+  
+  .hero h1 {
+    font-size: 32px !important;
+  }
+  
+  .elegante {
+    font-size: 28px !important;
   }
 }
 
