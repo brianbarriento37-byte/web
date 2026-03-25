@@ -758,131 +758,89 @@ a:focus-visible, button:focus-visible {
   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-/* === UBICACIÓN === */
-.ubicacion {
-  background: #0a0a0a;
-  padding: 60px 20px;
-  text-align: center;
-  border-top: 1px solid rgba(212,175,55,0.2);
-  width: 100%;
-}
-
-.ubicacion-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.flag-large {
-  width: 60px;
-  height: auto;
-  border-radius: 8px;
-  border: 2px solid rgba(212,175,55,0.3);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-}
-
-.ubicacion-text h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  color: #D4AF37;
-  margin: 0 0 8px;
-}
-
-.ubicacion-text p {
-  color: #a0aec0;
-  font-size: 16px;
-  margin: 0;
-}
-
-/* RESPONSIVE PARA MÓVIL */
+/* === RESPONSIVE PARA MÓVIL === */
 @media(max-width: 768px){
   .envios-bar {
-    font-size: 12px;
-    padding: 10px 15px;
+    position: relative !important;
+    top: 0 !important;
+    padding: 10px 15px !important;
+    font-size: 12px !important;
   }
+  
   .envios-content {
     flex-direction: column;
     gap: 5px;
   }
+  
   .flag-icon {
     width: 20px;
   }
-  .ubicacion-content {
-    flex-direction: column;
-    gap: 15px;
-  }
-  .flag-large {
-    width: 50px;
-  }
-  .ubicacion-text h3 {
-    font-size: 20px;
-  }
-  .ubicacion-text p {
-    font-size: 14px;
+  
+  .hero {
+    margin-top: 0 !important;
+    padding: 40px 20px 80px !important;
   }
 }
 
-
-/* === TESTIMONIOS DE CLIENTES === */
+/* === TESTIMONIOS CARRUSEL === */
 .testimonios {
   text-align: center;
-  padding: 100px 20px;
+  padding: 80px 20px;
   background: linear-gradient(180deg, var(--dark-secondary) 0%, var(--dark) 100%);
   border-top: 1px solid rgba(212,175,55,0.1);
 }
 
 .testimonios-header h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 42px;
+  font-size: 36px;
   color: var(--gold);
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .testimonios-header p {
   color: var(--text-secondary);
-  font-size: 16px;
-  margin-bottom: 50px;
+  font-size: 15px;
+  margin-bottom: 40px;
 }
 
-.testimonios-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  max-width: 1200px;
+.testimonios-carousel {
+  position: relative;
+  max-width: 700px;
   margin: 0 auto;
+  min-height: 280px;
 }
 
-.testimonio-card {
+.testimonio-slide {
+  display: none;
   background: var(--card-bg);
-  padding: 35px 30px;
+  padding: 40px 30px;
   border-radius: 20px;
   border: 1px solid rgba(212,175,55,0.2);
-  transition: var(--transition);
-  backdrop-filter: blur(10px);
+  animation: fadeIn 0.5s ease;
 }
 
-.testimonio-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(212,175,55,0.4);
-  box-shadow: 0 15px 50px rgba(212,175,55,0.2);
+.testimonio-slide.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .testimonio-estrellas {
-  font-size: 24px;
+  font-size: 28px;
   margin-bottom: 20px;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 }
 
 .testimonio-texto {
   color: var(--text-secondary);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.8;
   font-style: italic;
   margin-bottom: 25px;
-  min-height: 100px;
+  min-height: 80px;
 }
 
 .testimonio-autor {
@@ -893,21 +851,77 @@ a:focus-visible, button:focus-visible {
 .testimonio-nombre {
   color: var(--gold);
   font-weight: 600;
-  font-size: 16px;
-  margin-bottom: 5px;
+  font-size: 17px;
+  margin-bottom: 3px;
 }
 
 .testimonio-ubicacion {
   color: var(--text-secondary);
-  font-size: 13px;
+  font-size: 14px;
+}
+
+/* BOTONES DEL CARRUSEL */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev { left: -20px; }
+.carousel-btn.next { right: -20px; }
+
+/* INDICADORES (PUNTITOS) */
+.carousel-indicadores {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.indicador {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(212,175,55,0.3);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.indicador.active {
+  background: var(--gold);
+  transform: scale(1.2);
+}
+
+.indicador:hover {
+  background: var(--gold-light);
 }
 
 /* RESPONSIVE PARA MÓVIL */
-@media(max-width: 992px){
-  .testimonios-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
-  }
+@media(max-width: 768px){
+  .testimonios { padding: 60px 20px; }
+  .testimonios-header h2 { font-size: 28px; }
+  .testimonio-texto { font-size: 15px; min-height: auto; }
+  .carousel-btn { width: 40px; height: 40px; font-size: 18px; }
+  .carousel-btn.prev { left: 0; }
+  .carousel-btn.next { right: 0; }
 }
 
 @media(max-width: 768px){
@@ -1012,6 +1026,38 @@ a:focus-visible, button:focus-visible {
   }
   .beneficio-item p {
     font-size: 12px;
+  }
+}
+
+/* === UBICACIÓN EN FOOTER === */
+.footer-ubicacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.footer-flag {
+  width: 18px;
+  height: auto;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+@media(max-width: 768px){
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  .footer-ubicacion {
+    justify-content: center;
+    order: 2;
+  }
+  .footer-flag {
+    width: 16px;
   }
 }
 
@@ -1401,16 +1447,6 @@ a:focus-visible, button:focus-visible {
   <p class="features">Respuesta rápida • Asesoramiento gratuito • Envíos seguros</p>
 </section>
 
-<!-- UBICACIÓN -->
-<section class="ubicacion">
-  <div class="ubicacion-content">
-    <img src="https://flagcdn.com/w80/do.png" alt="República Dominicana" class="flag-large">
-    <div class="ubicacion-text">
-      <h3>📍 Nuestra Ubicación</h3>
-      <p>Sosúa, Puerto Plata, República Dominicana</p>
-    </div>
-  </div>
-</section>
 
 <!-- ✅ PEGA LOS BENEFICIOS AQUÍ -->
 <section class="beneficios">
@@ -1448,16 +1484,17 @@ a:focus-visible, button:focus-visible {
   </div>
 </section>
 
-<!-- TESTIMONIOS DE CLIENTES -->
+<!-- TESTIMONIOS CARRUSEL -->
 <section class="testimonios">
   <div class="testimonios-header">
     <h2>Lo Que Dicen Nuestros Clientes</h2>
     <p>Historias reales de clientes satisfechos en toda República Dominicana</p>
   </div>
   
-  <div class="testimonios-grid">
+  <div class="testimonios-carousel">
+    
     <!-- Testimonio 1 -->
-    <div class="testimonio-card">
+    <div class="testimonio-slide active">
       <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
       <div class="testimonio-texto">
         "Excelentes perfumes, 100% originales. El Baccarat Rouge me duró más de 8 horas. ¡Totalmente recomendado!"
@@ -1469,7 +1506,7 @@ a:focus-visible, button:focus-visible {
     </div>
 
     <!-- Testimonio 2 -->
-    <div class="testimonio-card">
+    <div class="testimonio-slide">
       <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
       <div class="testimonio-texto">
         "La atención es increíble. Me asesoraron perfecto y encontré mi fragancia ideal. El envío llegó en 2 días a Santo Domingo."
@@ -1481,7 +1518,7 @@ a:focus-visible, button:focus-visible {
     </div>
 
     <!-- Testimonio 3 -->
-    <div class="testimonio-card">
+    <div class="testimonio-slide">
       <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
       <div class="testimonio-texto">
         "Precios accesibles y calidad garantizada. Ya he comprado 3 veces y siempre excelente. JayPerfum es mi tienda favorita."
@@ -1493,7 +1530,7 @@ a:focus-visible, button:focus-visible {
     </div>
 
     <!-- Testimonio 4 -->
-    <div class="testimonio-card">
+    <div class="testimonio-slide">
       <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
       <div class="testimonio-texto">
         "Compré el Dior Sauvage para mi esposo y le encantó. Original y bien empacado. Volveré a comprar pronto."
@@ -1504,29 +1541,18 @@ a:focus-visible, button:focus-visible {
       </div>
     </div>
 
-    <!-- Testimonio 5 -->
-    <div class="testimonio-card">
-      <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
-      <div class="testimonio-texto">
-        "Muy profesionales. Me ayudaron a elegir el perfume perfecto para regalar. Mi novia quedó fascinada."
-      </div>
-      <div class="testimonio-autor">
-        <div class="testimonio-nombre">Juan Pablo</div>
-        <div class="testimonio-ubicacion">📍 Sosúa, RD</div>
-      </div>
+    <!-- BOTONES DE NAVEGACIÓN -->
+    <button class="carousel-btn prev" onclick="cambiarTestimonio(-1)">❮</button>
+    <button class="carousel-btn next" onclick="cambiarTestimonio(1)">❯</button>
+    
+    <!-- INDICADORES (PUNTITOS) -->
+    <div class="carousel-indicadores">
+      <span class="indicador active" onclick="irAlTestimonio(0)"></span>
+      <span class="indicador" onclick="irAlTestimonio(1)"></span>
+      <span class="indicador" onclick="irAlTestimonio(2)"></span>
+      <span class="indicador" onclick="irAlTestimonio(3)"></span>
     </div>
-
-    <!-- Testimonio 6 -->
-    <div class="testimonio-card">
-      <div class="testimonio-estrellas">⭐⭐⭐⭐⭐</div>
-      <div class="testimonio-texto">
-        "Los mejores precios en perfumes originales. El Creed Aventus huele increíble y dura todo el día."
-      </div>
-      <div class="testimonio-autor">
-        <div class="testimonio-nombre">Roberto Sánchez</div>
-        <div class="testimonio-ubicacion">📍 Punta Cana, RD</div>
-      </div>
-    </div>
+    
   </div>
 </section>
 
@@ -1543,12 +1569,16 @@ a:focus-visible, button:focus-visible {
     </div>
   </div>
   <div class="footer-bottom">
-    <div>© 2026 JayPerfum. Todos los derechos reservados.</div>
-    <div>
-      <a href="#">Términos de servicio</a>
-      <a href="#">Política de privacidad</a>
-    </div>
+  <div>© 2026 JayPerfum. Todos los derechos reservados.</div>
+  <div class="footer-ubicacion">
+    <img src="https://flagcdn.com/w20/do.png" alt="República Dominicana" class="footer-flag">
+    <span>Sosúa, Puerto Plata, RD</span>
   </div>
+  <div>
+    <a href="#">Términos de servicio</a>
+    <a href="#">Política de privacidad</a>
+  </div>
+</div>
 </footer>
 
 <a href="https://wa.me/18298917703?text=Hola,%20quiero%20información" class="whatsapp-float" target="_blank">
@@ -1606,6 +1636,43 @@ document.addEventListener('DOMContentLoaded', function() {
       barraEnvios.classList.remove('oculta');
     }
   });
+</script>
+
+<!-- SCRIPT PARA CARRUSEL DE TESTIMONIOS -->
+<script>
+  let testimonioActual = 0;
+  const testimonios = document.querySelectorAll('.testimonio-slide');
+  const indicadores = document.querySelectorAll('.indicador');
+
+  function mostrarTestimonio(index) {
+    // Ocultar todos
+    testimonios.forEach(t => t.classList.remove('active'));
+    indicadores.forEach(i => i.classList.remove('active'));
+    
+    // Mostrar el seleccionado
+    testimonios[index].classList.add('active');
+    indicadores[index].classList.add('active');
+    testimonioActual = index;
+  }
+
+  function cambiarTestimonio(direccion) {
+    let nuevoIndex = testimonioActual + direccion;
+    
+    // Si llega al final, vuelve al inicio (y viceversa)
+    if (nuevoIndex >= testimonios.length) nuevoIndex = 0;
+    if (nuevoIndex < 0) nuevoIndex = testimonios.length - 1;
+    
+    mostrarTestimonio(nuevoIndex);
+  }
+
+  function irAlTestimonio(index) {
+    mostrarTestimonio(index);
+  }
+
+  // Cambio automático cada 8 segundos (opcional)
+  setInterval(() => {
+    cambiarTestimonio(1);
+  }, 8000);
 </script>
 
 </body>
